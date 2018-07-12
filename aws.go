@@ -184,3 +184,19 @@ func (aService *AwsService) PutItem(item *dynamodb.PutItemInput) {
 		fmt.Println(err.Error())
 	}
 }
+func (aService *AwsService) GetItem(item *dynamodb.GetItemInput) *dynamodb.GetItemOutput {
+	svc := dynamodb.New(aService.session)
+	itemOutput, err := svc.GetItem(item)
+	if err != nil {
+		fmt.Println(err.Error())
+	}
+	return itemOutput
+}
+func (aService *AwsService) QueryItem(item *dynamodb.QueryInput) *dynamodb.QueryOutput {
+	svc := dynamodb.New(aService.session)
+	itemOutput, err := svc.Query(item)
+	if err != nil {
+		fmt.Println(err.Error())
+	}
+	return itemOutput
+}
